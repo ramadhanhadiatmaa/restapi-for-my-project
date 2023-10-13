@@ -1,4 +1,4 @@
-FROM golang:1.19
+FROM golang:1.21.1
 
 WORKDIR /app
 
@@ -10,6 +10,6 @@ COPY *.go ./
 
 RUN CGO_ENABLED=0 GOOS=linux go build -o /apicsmfib
 
-EXPOSE 8000
+EXPOSE 8080
 
 CMD ["/apicsmfib"]
