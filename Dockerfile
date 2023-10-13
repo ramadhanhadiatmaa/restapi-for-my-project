@@ -13,7 +13,6 @@ RUN go build -o /apicsmfib
 
 EXPOSE 8080
 
+CMD ["/apicsmfib"]
 
-# CMD ["/apicsmfib"]
-
-ENTRYPOINT [ "/app/apicsmfib" ]
+# ENTRYPOINT [ "/app/apicsmfib" ]

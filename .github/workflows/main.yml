@@ -40,21 +40,20 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME }}/api-csm:latest
-
-  deployment:
-    needs: build
-    environment: staging
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to VPS
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.SERVER }}
-          username: ${{ secrets.SERVER_USERNAME}}
-          password: ${{ secrets.SERVER_PASSWORD}}
-          port: ${{ secrets.SERVER_PORT  }}
-          script: |
-            whoami
-            docker stop api-csm || true && docker rm api-csm || true
-            docker pull ${{ vars.IMAGE_NAME }}
-            docker run -d -p 1213:1213 --name ${{ vars.CONTAINER_NAME }} ${{ vars.IMAGE_NAME }}
+#  deployment:
+#    needs: build
+#    environment: staging
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Deploy to VPS
+#        uses: appleboy/ssh-action@master
+#        with:
+#          host: ${{ secrets.SERVER }}
+#          username: ${{ secrets.SERVER_USERNAME}}
+#          password: ${{ secrets.SERVER_PASSWORD}}
+#          port: ${{ secrets.SERVER_PORT  }}
+#          script: |
+#            whoami
+#            docker stop api-csm || true && docker rm api-csm || true
+#            docker pull ${{ vars.IMAGE_NAME }}
+#            docker run -d -p 1213:1213 --name ${{ vars.CONTAINER_NAME }} ${{ vars.IMAGE_NAME }}
