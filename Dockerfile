@@ -1,21 +1,15 @@
-FROM golang:alpine
-
-RUN apk update && apk add --no-cache git
+FROM golang:1.19
 
 WORKDIR /app
 
-COPY go.mod .
-
-COPY go.sum .
+COPY go.mod go.sum ./
 
 RUN go mod download
 
-COPY . .
+COPY *.go ./
 
-RUN go mod tidy
-
-RUN go build -o apicsmfib .
+RUN CGO_ENABLED=0 GOOS=linux go build -o /apicsmfib
 
 EXPOSE 8000
 
-CMD [ "./apicsmfib" ]
+CMD ["/apicsmfib"]
