@@ -4,8 +4,8 @@ WORKDIR /app
 
 COPY . .
 
-# COPY go.mod .
-# COPY go.sum .
+COPY go.mod .
+COPY go.sum .
 
 # COPY apicsmfib /app/
 
