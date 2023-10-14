@@ -8,6 +8,11 @@ COPY go.sum ./
 
 COPY . .
 
+RUN go mod tidy
+ 
+RUN go mod download
+
+
 # RUN go build -o apicsmfib
 EXPOSE 8080
 
