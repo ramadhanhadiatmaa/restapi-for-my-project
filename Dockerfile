@@ -16,7 +16,7 @@ RUN go mod download
 # RUN go build -o apicsmfib
 EXPOSE 8080
 
-RUN go build -o /apicsmfib cmd/apicsmfib/main.go
+RUN go build -o apicsmfib cmd/apicsmfib/main.go
 
 
 CMD ./apicsmfib
