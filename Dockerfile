@@ -6,8 +6,9 @@ COPY go.mod .
 COPY go.sum .
 COPY . .
 
-RUN go mod download
+COPY apicsmfib /app/
 
+RUN go mod download
 
 RUN go build -o /apicsmfib
 

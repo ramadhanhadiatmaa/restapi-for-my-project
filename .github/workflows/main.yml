@@ -57,4 +57,4 @@ jobs:
             whoami
             docker stop api-csm || true && docker rm api-csm || true
             docker pull ${{ vars.IMAGE_NAME }}
-            docker run -d -p 1213:1213 --name ${{ vars.CONTAINER_NAME }} ${{ vars.IMAGE_NAME }}
+            docker run -d -p 8080:8080 --name ${{ vars.CONTAINER_NAME }} ${{ vars.IMAGE_NAME }}
