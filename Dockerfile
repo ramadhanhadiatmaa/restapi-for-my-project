@@ -1,21 +1,26 @@
-FROM golang:alpine
-
-RUN apk update && apk add --no-cache git
+FROM golang:1.21.1
 
 WORKDIR /app
 
-COPY go.mod .
+COPY go.mod ./
 
-COPY go.sum .
-
-RUN go mod download
+COPY go.sum ./
 
 COPY . .
 
 RUN go mod tidy
+ 
+RUN go mod download
 
-RUN go build -o apicsmfib .
 
-EXPOSE 8000
+# RUN go build -o apicsmfib
+EXPOSE 8080
 
-CMD [ "./apicsmfib" ]
+RUN go build -o apicsmfib
+
+
+CMD ./apicsmfib
+# CMD ["./apicsmfib"]
+
+# COPY apicsmfib /app/
+# ENTRYPOINT [ "/app/apicsmfib" ]
