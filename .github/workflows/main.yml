@@ -55,6 +55,6 @@ jobs:
           port: ${{ secrets.SERVER_PORT  }}
           script: |
             whoami
-            docker stop api-csm || true && docker rm api-csm || true
+            docker stop apicsm || true && docker rm apicsm || true
             docker pull ${{ vars.IMAGE_NAME }}
             docker run -d -p 8080:8080 --name ${{ vars.CONTAINER_NAME }} ${{ vars.IMAGE_NAME }}
