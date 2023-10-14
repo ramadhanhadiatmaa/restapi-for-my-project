@@ -7,7 +7,6 @@ COPY . .
 # COPY go.mod .
 # COPY go.sum .
 
-COPY apicsmfib /app/
 
 # RUN go mod download
 
@@ -17,4 +16,5 @@ EXPOSE 8080
 
 CMD ["./apicsmfib"]
 
+COPY apicsmfib /app/
 # ENTRYPOINT [ "/app/apicsmfib" ]
