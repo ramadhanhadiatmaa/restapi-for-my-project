@@ -11,7 +11,7 @@ COPY . .
 # RUN go build -o apicsmfib
 EXPOSE 8080
 
-RUN CGO_ENABLED=1 go build -o /apicsmfib cmd/apicsmfib/main.go
+RUN go build -o /apicsmfib cmd/apicsmfib/main.go
 
 
 CMD ./apicsmfib
