@@ -10,7 +10,7 @@ COPY apicsmfib /app/
 
 RUN go mod download
 
-RUN go build -o /apicsmfib
+RUN go build -o /app/apicsmfib
 
 EXPOSE 8080
 
