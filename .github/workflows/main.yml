@@ -24,6 +24,10 @@ jobs:
           echo "DB_USER=${DB_USER}" >> .env
           echo "DB_PASS=${DB_PASS}" >> .env
           echo "DB_NAME=${DB_NAME}" >> .env
+        shell: bash
+
+      - name: Show .env File
+        run: cat .env
 
       - name: Connect to DockerHub
         uses: docker/login-action@v2
