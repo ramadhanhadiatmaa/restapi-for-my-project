@@ -20,5 +20,5 @@ COPY --from=build /app/apicsmfib /apicsmfib
 
 EXPOSE 8080
 
-CMD ["/apicsmfib"]
+CMD /apicsmfib
 
