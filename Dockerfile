@@ -1,4 +1,4 @@
-FROM golang:1.21.1
+FROM golang:1.21.1 AS build
 
 WORKDIR /app
 
@@ -12,15 +12,13 @@ RUN go mod tidy
  
 RUN go mod download
 
-
-# RUN go build -o apicsmfib
-EXPOSE 8080
-
 RUN go build -o apicsmfib
 
+FROM alpine:latest
 
-CMD ./apicsmfib
-# CMD ["./apicsmfib"]
+COPY --from=build /app/apicsmfib /apicsmfib
 
-# COPY apicsmfib /app/
-# ENTRYPOINT [ "/app/apicsmfib" ]
+EXPOSE 8080
+
+CMD ["/apicsmfib"]
+
