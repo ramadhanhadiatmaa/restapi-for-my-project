@@ -1,8 +1,8 @@
 package main
 
 import (
-	"apicsmfib/controller/usercontroller"
 	"apicsmfib/models"
+	"apicsmfib/routes"
 
 	"github.com/gofiber/fiber/v2"
 )
@@ -12,14 +12,7 @@ func main() {
 
 	app := fiber.New()
 
-	api := app.Group("/api")
-	user := api.Group("/users")
-
-	user.Get("/", usercontroller.Index)
-	user.Get("/:username", usercontroller.Show)
-	user.Post("/", usercontroller.Create)
-	user.Put("/:username", usercontroller.Update)
-	user.Delete("/:username", usercontroller.Delete)
+	routes.Route(app)
 
 	app.Listen(":8080")
 }

@@ -1,4 +1,4 @@
-package usercontroller
+package controllers
 
 import (
 	"apicsmfib/models"
@@ -76,7 +76,7 @@ func Update(c *fiber.Ctx) error {
 
 	if models.DB.Where("username = ?", username).Updates(&user).RowsAffected == 0 {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
-			"message": "Failed Update Data.",
+			"message": username + " Not Found, Failed Update Data.",
 		})
 	}
 
