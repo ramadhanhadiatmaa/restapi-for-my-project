@@ -1,4 +1,4 @@
-FROM golang:1.21.1 AS build
+FROM golang:1.21.1 AS builder
 
 WORKDIR /app
 
@@ -16,9 +16,9 @@ RUN go build -o apicsmfib
 
 FROM alpine:latest
 
-COPY --from=build /app/apicsmfib /apicsmfib
+COPY --from=builder /app/apicsmfib .
 
 EXPOSE 8080
 
-CMD /apicsmfib
+CMD ./apicsmfib
 
